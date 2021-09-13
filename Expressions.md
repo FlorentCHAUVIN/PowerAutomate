@@ -1,8 +1,12 @@
 # Exemple d'expressions Power Automate contruite pour des besoins spécifiques
 
-## Filtrer les résultats d'une requète SharePoint
+# Sommaire
 
-### A la source via le connecteur natif "Obtenir les éléments"
+[[_TOC_]]
+
+## Filtrer les résultats de requète SharePoint
+
+### A la source via le connecteur natif Obtenir les éléments
 
 C'est la méthode recommandé, Il suffit d'ajouter une requête de filtre, cette requête est du type OData.
 Il faut utiliser les noms internes des champs notamment en cas d'utilisation de caractère spéciaux ou d'espace et il faut toujours mettre entre simple quote les valeurs comparatives de type String par exemple :
