@@ -2,7 +2,9 @@
 
 # Sommaire
 
-[[_TOC_]]
+
+[TOC]
+
 
 ## Filtrer les résultats de requète SharePoint
 
