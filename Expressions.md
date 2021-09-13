@@ -39,7 +39,7 @@ Puis on peut choisir la propriété à comparer :
 
     item()?['MycolumToCompare']
 
-Si besoin et pour éviter une boucle on peut aussi aller comparer une sous valeur du json entrant soi même l'expression, par exemple avec l'email du créateur :
+Si besoin et pour éviter une boucle on peut aussi aller comparer une sous-valeur du json en entrant soi même l'expression, par exemple avec l'email du créateur :
 
     item()?['Author/Email']
 
@@ -68,9 +68,9 @@ La documentation  Microsoft sur l'api REST SharePoint n'est pas exhausitive mais
 
 #### Si on utilise CAML
 
-Le langage CAML va permettre d'aller beacouop plus loin dans les requêtes et de répondre à des scénarios avancés.
+Le langage CAML va permettre d'aller beaucoup plus loin dans les requêtes et de répondre à des scénarios avancés.
 
-Voici le point d'entrée de la docuementation Microsoft :
+Voici le point d'entrée de la documentation Microsoft :
 https://docs.microsoft.com/en-us/sharepoint/dev/schema/introduction-to-collaborative-application-markup-language-caml
 
 
@@ -91,7 +91,7 @@ Le plus simple est d'utiliser l'expression 'empty' sur notre Body de sortie du f
     empty(body('Filtrer_mon_résultat SharePoint'))
     empty(items('Appliquer_à_chaque_élement')?['InternalColumnName'])
 
-Parfois lorsqu'un élement SharePoint est renvoyé la propriété que nous cherchons n'est pas présente dans le résultat json. Cela peut avoir des impacts sur vos expressions 'empty' qui vont alors renvoyé des erreurs.
+Parfois lorsqu'un élement SharePoint est renvoyé la propriété que nous cherchons n'est pas présente dans le résultat json. Cela peut avoir des impacts sur vos expressions 'empty' qui vont alors renvoyées des erreurs.
 
 Une alternative est alors de regarder si le résultat de la requête contient une référence à la colonne :
 
