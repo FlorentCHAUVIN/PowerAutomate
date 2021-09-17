@@ -1,11 +1,5 @@
-# Exemple d'expressions Power Automate contruite pour des besoins spécifiques
-
-# Sommaire
-
-
 [TOC]
-
-
+# Exemple d'expressions Power Automate contruite pour des besoins spécifiques
 ## Filtrer les résultats de requète SharePoint
 
 ### A la source via le connecteur natif Obtenir les éléments
