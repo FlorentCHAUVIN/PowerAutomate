@@ -1,4 +1,18 @@
-[TOC]
+# Sommaire
+
+[Exemple d'expressions Power Automate contruite pour des besoins spécifiques](#exemple-dexpressions-power-automate-contruite-pour-des-besoins-sp%C3%A9cifiques)
+- [Sommaire](#sommaire)
+- [Exemple d'expressions Power Automate contruite pour des besoins spécifiques](#exemple-dexpressions-power-automate-contruite-pour-des-besoins-spécifiques)
+  - [Filtrer les résultats de requète SharePoint](#filtrer-les-résultats-de-requète-sharepoint)
+    - [A la source via le connecteur natif Obtenir les éléments](#a-la-source-via-le-connecteur-natif-obtenir-les-éléments)
+    - [En filtrant via l'opération de donnée "Fitrer un tableau"](#en-filtrant-via-lopération-de-donnée-fitrer-un-tableau)
+    - [En filtrant avec une requête HTTP SharePoint](#en-filtrant-avec-une-requête-http-sharepoint)
+      - [Si on utilise OData](#si-on-utilise-odata)
+      - [Si on utilise CAML](#si-on-utilise-caml)
+- [Contrôler si le résultat d'une requête, d'un filtrage ou d'une propriété est vide](#contrôler-si-le-résultat-dune-requête-dun-filtrage-ou-dune-propriété-est-vide)
+- [Éviter les boucles sur les requêtes ne renvoyant qu'un seul résultat](#éviter-les-boucles-sur-les-requêtes-ne-renvoyant-quun-seul-résultat)
+- [Forcer la mise à jour d'un champ de type Lookup d'un élément SharePoint pour le remettre vide](#forcer-la-mise-à-jour-dun-champ-de-type-lookup-dun-élément-sharepoint-pour-le-remettre-vide)
+- [Formatter une date en provenance d'un champ texte pour mettre à jour un élément SharePoint](#formatter-une-date-en-provenance-dun-champ-texte-pour-mettre-à-jour-un-élément-sharepoint)
 # Exemple d'expressions Power Automate contruite pour des besoins spécifiques
 ## Filtrer les résultats de requète SharePoint
 
