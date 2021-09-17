@@ -1,7 +1,3 @@
-# Sommaire
-
-[Exemple d'expressions Power Automate contruite pour des besoins spécifiques](#exemple-dexpressions-power-automate-contruite-pour-des-besoins-sp%C3%A9cifiques)
-- [Sommaire](#sommaire)
 - [Exemple d'expressions Power Automate contruite pour des besoins spécifiques](#exemple-dexpressions-power-automate-contruite-pour-des-besoins-spécifiques)
   - [Filtrer les résultats de requète SharePoint](#filtrer-les-résultats-de-requète-sharepoint)
     - [A la source via le connecteur natif Obtenir les éléments](#a-la-source-via-le-connecteur-natif-obtenir-les-éléments)
