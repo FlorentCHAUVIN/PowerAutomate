@@ -162,7 +162,7 @@ Première étape, je vais formater le statut OK ou KO pour celui-ci apparaisse e
 
     replace(body('Créer_un_tableau_HTML_des_résultats_OK'),'<td>OK</td>','<td style="background-color:green;color: white;text-align:center">OK</td>')
 
-    @{replace(body('Créer_un_tableau_HTML_des_résultats_KO'), '<td>KO</td>', '<td style="background-color:red;color: white;text-align:center">KO</td>')}
+    replace(body('Créer_un_tableau_HTML_des_résultats_KO'), '<td>KO</td>', '<td style="background-color:red;color: white;text-align:center">KO</td>')
 
 
 Seconde étape, je vais mettre en forme les tableaux pourqu'ils soient plus lisibles et colorés (Lignes visible de 1px, entêtes en gras, fond gris et un peu plus focné pour l'entête). Le format est identique pour les deux tableaux.
