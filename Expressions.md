@@ -180,13 +180,13 @@ Pour finir les tableaux vont être ajoutés dans des mails selon 4 cas de figure
 * Tableau de résultats KO (Variable de tableau OK vide)
 * Tableaux des résultats OK et KO (Variables des tableaux OK et KO ne sont pas vides)
 
-Le contenu du message est adapté à chaque cas de figure et pour certian je passe en mode Code pour ajouter des messages spécifiques.
+Le contenu du message est adapté à chaque cas de figure et pour certain je passe en mode Code pour ajouter des messages spécifiques.
 
 On pourra dans chaque mails ajouter le ou les tableaux en prenant la dernière sortie de formatage, dans mon cas :
 
-    outputs('Format_du_tableau_HTML_des_résultats_KO_(Table)')
+    outputs('Format_du_tableau_HTML_des_résultats_OK_(Table)')
 
-    outputs('Format_du_tableau_HTML_des_résultats_OK_(Status)')
+    outputs('Format_du_tableau_HTML_des_résultats_KO_(Table)')
 
 
 **Attention, lorsque l'on ajoute plusieurs tableaux dans le corps du message brut, le style de ceux-ci n'est plus pris en compte. Il faut alors ajouter le style directemment dans le corps du mail en mode code avant la balise \<p> :**
