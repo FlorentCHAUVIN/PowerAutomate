@@ -1,4 +1,4 @@
-Vous trouverez dans cet page des exemples d'expressions Power Automate contruites pour des besoins spécifiques.
+**Vous trouverez dans cet page des exemples d'expressions Power Automate contruites pour des besoins spécifiques.**
 
 - [Filtrer les résultats de requète SharePoint](#filtrer-les-résultats-de-requète-sharepoint)
   - [A la source via le connecteur natif Obtenir les éléments](#a-la-source-via-le-connecteur-natif-obtenir-les-éléments)
