@@ -1,7 +1,7 @@
 **Vous trouverez dans cet page des exemples d'expressions Power Automate contruites pour des besoins spécifiques.**
 
 - [Filtrer les résultats de requète SharePoint](#filtrer-les-résultats-de-requète-sharepoint)
-  - [A la source via le connecteur natif Obtenir les éléments](#a-la-source-via-le-connecteur-natif-obtenir-les-éléments)
+  - [A la source via le connecteur natif "Obtenir les éléments"](#a-la-source-via-le-connecteur-natif-obtenir-les-éléments)
   - [En filtrant via l'opération de donnée "Fitrer un tableau"](#en-filtrant-via-lopération-de-donnée-fitrer-un-tableau)
   - [En filtrant avec une requête HTTP SharePoint](#en-filtrant-avec-une-requête-http-sharepoint)
     - [Si on utilise OData](#si-on-utilise-odata)
@@ -12,7 +12,7 @@
 - [Formatter une date en provenance d'un champ texte pour mettre à jour un élément SharePoint](#formatter-une-date-en-provenance-dun-champ-texte-pour-mettre-à-jour-un-élément-sharepoint)
 # Filtrer les résultats de requète SharePoint
 
-## A la source via le connecteur natif Obtenir les éléments
+## A la source via le connecteur natif "Obtenir les éléments"
 
 C'est la méthode recommandé, Il suffit d'ajouter une requête de filtre, cette requête est du type OData.
 Il faut utiliser les noms internes des champs notamment en cas d'utilisation de caractère spéciaux ou d'espace et il faut toujours mettre entre simple quote les valeurs comparatives de type String par exemple :
