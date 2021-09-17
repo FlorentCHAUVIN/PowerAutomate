@@ -1,4 +1,4 @@
-**Vous trouverez dans cet page des exemples d'expressions Power Automate contruites pour des besoins spécifiques.**
+**Vous trouverez dans cette page des exemples d'expressions Power Automate contruites pour des besoins spécifiques.**
 
 - [Filtrer les résultats de requète SharePoint](#filtrer-les-résultats-de-requète-sharepoint)
   - [A la source via le connecteur natif "Obtenir les éléments"](#a-la-source-via-le-connecteur-natif-obtenir-les-éléments)
@@ -10,6 +10,9 @@
 - [Éviter les boucles sur les requêtes ne renvoyant qu'un seul résultat](#éviter-les-boucles-sur-les-requêtes-ne-renvoyant-quun-seul-résultat)
 - [Forcer la mise à jour d'un champ de type Lookup d'un élément SharePoint pour le remettre vide](#forcer-la-mise-à-jour-dun-champ-de-type-lookup-dun-élément-sharepoint-pour-le-remettre-vide)
 - [Formatter une date en provenance d'un champ texte pour mettre à jour un élément SharePoint](#formatter-une-date-en-provenance-dun-champ-texte-pour-mettre-à-jour-un-élément-sharepoint)
+- [Formater un tableau HTML](#formater-un-tableau-html)
+
+
 # Filtrer les résultats de requète SharePoint
 
 ## A la source via le connecteur natif "Obtenir les éléments"
@@ -132,3 +135,62 @@ Lorsque l'on souhaite créer ou mettre à jour un élement SharePoint avec un ch
 Dans l'exemple ci-dessous, j'ai un fichier csv avec une colonne 'Date de signature' au format français et je souhaite que la colonne correspondante dans SharePoint soit null si la colonne est vide ou si elle contient '00/00/0000" sinon qu'elle soit mise à jour avec ma date de signature que je vais correctemment reformaté :
 
     if(or(equals(items('Appliquer_à_chaque_lignes_de_l''import')?['Date de signature'], '00/00/0000'), empty(items('Appliquer_à_chaque_lignes_de_l''import')?['Date de signature'])), null, formatDateTime(concat(substring(items('Appliquer_à_chaque_lignes_de_l''import')?['Date de signature'], 6, 4), '-', substring(items('Appliquer_à_chaque_lignes_de_l''import')?['Date de signature'], 3, 2), '-', substring(items('Appliquer_à_chaque_lignes_de_l''import')?['Date de signature'], 0, 2)), 'yyyy-MM-dd'))
+
+
+# Formater un tableau HTML
+
+Dans cet exemple mon flow Power Automate traite des documents et renvoie le résultat de chaque traitement dans deux variables de type tableau initialisés au début du flow.
+Une de variables va contenir les résultats OK et l'autre les résultats KO.
+
+
+Chaque résultat de traitement est ajouté via l'action "Ajouter à la variable de tableau" avec 4 propriétés configurés sur des valeurs de variable définies pendant la traitement :
+
+    {
+    "Status": "@{variables('ResultatIdentificationPJ')}",
+    "Attachment": "@{items('Appliquer_à_chaque_pièce_jointe')?['name']}",
+    "Entity": "@{variables('ResultatIdentificationSociete')}",
+    "Document Type": "@{variables('ResultatIdentificationDocument')}"
+    }
+
+
+Je vais ensuite constuire un tableau HTML pour chacune de ces variables via l'action d'opération de donnée du même nom en laissant les colonnes en automatique.
+
+
+Puis je vais procéder en deux temps pour formater chacun de ces tableaux via l'action d'opération de donnée "Message".
+
+Première étape, je vais formater le statut OK ou KO pour celui-ci apparaisse en vert ou en rouge en remplaçant les balises.
+
+    replace(body('Créer_un_tableau_HTML_des_résultats_OK'),'<td>OK</td>','<td style="background-color:green;color: white;text-align:center">OK</td>')
+
+    @{replace(body('Créer_un_tableau_HTML_des_résultats_KO'), '<td>KO</td>', '<td style="background-color:red;color: white;text-align:center">KO</td>')}
+
+
+Seconde étape, je vais mettre en forme les tableaux pourqu'ils soient plus lisibles et colorés (Lignes visible de 1px, entêtes en gras, fond gris et un peu plus focné pour l'entête). Le format est identique pour les deux tableaux.
+
+    replace(outputs('Format_du_tableau_HTML_des_résultats_OK_(Status)'),'<table>','<style>table{color:#333;border-collapse:collapse;border-spacing:0;}td,th{border:1px solid #CCC;height:30px;padding:10px}th{background:#F3F3F3;font-weight:bold;}td{background:#FAFAFA;text-align:center;}</style><table>')
+ 
+    replace(outputs('Format_du_tableau_HTML_des_résultats_KO_(Status)'),'<table>','<style>table{color:#333;border-collapse:collapse;border-spacing:0;}td,th{border:1px solid #CCC;height:30px;padding:10px}th{background:#F3F3F3;font-weight:bold;}td{background:#FAFAFA;text-align:center;}</style><table>')
+
+
+
+Pour finir les tableaux vont être ajoutés dans des mails selon 4 cas de figures conditonnés par le fait que les variables soit vides:
+
+* Pas de tableau (Variables des tableaux OK et KO vide)
+* Tableau de résultats OK (Variable de tableau KO vide)
+* Tableau de résultats KO (Variable de tableau OK vide)
+* Tableaux des résultats OK et KO (Variables des tableaux OK et KO ne sont pas vides)
+
+Le contenu du message est adapté à chaque cas de figure et pour certian je passe en mode Code pour ajouter des messages spécifiques.
+
+On pourra dans chaque mails ajouter le ou les tableaux en prenant la dernière sortie de formatage, dans mon cas :
+
+    outputs('Format_du_tableau_HTML_des_résultats_KO_(Table)')
+
+    outputs('Format_du_tableau_HTML_des_résultats_OK_(Status)')
+
+
+**Attention, lorsque l'on ajoute plusieurs tableaux dans le corps du message brut, le style de ceux-ci n'est plus pris en compte. Il faut alors ajouter le style directemment dans le corps du mail en mode code avant la balise \<p> :**
+
+
+    <style>table{color:#333;border-collapse:collapse;border-spacing:0;}td,th{border:1px solid #CCC;padding:10px}th{background:#F3F3F3;font-weight:bold;}td{background:#FAFAFA;text-align:center}</style>
+
