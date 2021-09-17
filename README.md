@@ -8,4 +8,4 @@ Bien entendu, je décline toute responsabilité sur l'usage que vous pourriez fa
 
 # SOMMAIRE
 
-- [Expressions] (https://github.com/FlorentCHAUVIN/PowerAutomate/blob/main/Expressions.md)
+- [Expressions](https://github.com/FlorentCHAUVIN/PowerAutomate/blob/main/Expressions.md)
