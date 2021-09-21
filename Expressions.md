@@ -42,6 +42,10 @@ Voici un exemple concret pour un flow d'archivage :
 
     (P_x00e9_riode eq '@{variables('PeriodPlus3Ans')}') or (Modified lt '@{addDays(utcnow(), -1100)}')
 
+Et un autre pour faire une relance sur les documents non reçus à J-1,J et J+1 de leur deadline de réception :
+
+    (Deadline eq '@{formatDateTime(addDays(utcnow(), +1), 'yyyy-MM-dd')}' and Received eq 'False') or (Deadline lt '@{formatDateTime(utcnow(), 'yyyy-MM-dd')}') or (Deadline eq '@{formatDateTime(utcnow(), 'yyyy-MM-dd')}')
+
 ## En filtrant via l'opération de donnée "Fitrer un tableau"
 
 Pour filtrer on choisit la sortie Value de notre requête SharePoint
