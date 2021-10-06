@@ -46,6 +46,11 @@ Et un autre pour faire une relance sur les documents non reçus à J-1,J et J+1 
 
     (Deadline eq '@{formatDateTime(addDays(utcnow(), +1), 'yyyy-MM-dd')}' and Received eq 'False') or (Deadline lt '@{formatDateTime(utcnow(), 'yyyy-MM-dd')}') or (Deadline eq '@{formatDateTime(utcnow(), 'yyyy-MM-dd')}')
 
+On peut aussi travailler sur des sous-valeurs d'une colonne en ajoutant un '/':
+
+    Monitoring0/Id eq '5'
+
+
 ## En filtrant via l'opération de donnée "Fitrer un tableau"
 
 Pour filtrer on choisit la sortie Value de notre requête SharePoint
